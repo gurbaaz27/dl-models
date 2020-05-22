@@ -1,4 +1,4 @@
-# PyTorch implementation of InfoGAN [Paper](https://arxiv.org/pdf/1606.03657.pdf)
+# PyTorch implementation of InfoGAN [*Paper*](https://arxiv.org/pdf/1606.03657.pdf)
 
 ## Usage 
 
@@ -17,5 +17,6 @@
 
 
 ## Acknowledgement
--
--
+- [Toward Data Science: InfoGAN : GANs Part III](https://towardsdatascience.com/infogan-generative-adversarial-networks-part-iii-380c0c6712cd)
+- [DCGAN Paper](https://arxiv.org/abs/1511.06434)
+- [Google](https://www.google.com) :wink:
