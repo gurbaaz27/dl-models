@@ -3,7 +3,7 @@
 ## Usage 
 
 ### 1. Preprocessing the data
-* Dataset used in Flickr8k ([*download here*](https://www.kaggle.com/shadabhussain/flickr8k)). 
+* Dataset used is Flickr8k ([*download here*](https://www.kaggle.com/shadabhussain/flickr8k)). 
 * Extract and move images to a folder named : images and text files to folder named : text
 > ***NOTE** : Place both folders alongside the python files.*
 * Run the following command in Windows : 
@@ -21,21 +21,31 @@
 * Arguments
   * -model : Default: 'resnet18', other option is 'inception' (Inception_v3).
   * -dir : Training Directory path, default: 'train'
-  * -save_epoch : Epochs after which model saves checkpoint, default : 5
+  * -save_epoch : Epochs after which model saves checkpoint, default : 2
   * -learning_rate : Adam optimizer learning rate, default : 1e-3 (0.001)
+  * -num_epoch : Number of epochs, default : 10
   * -hidden_dim : Dimensions in hidden state of LSTM decoder, default : 512
   * -embedding_dim : Dimensions of encoder output, default : 512
 
 ### 3. Testing the model
 * Run the following command : 
-    <pre><code>python test.py -model <encoder_CNN_architecture> -image_path <image_path> -epoch<epoch_num>
-      </code></pre>
+    <pre><code>python test.py -model <encoder_CNN_architecture> -image_path <image_path> -epoch <epoch_num></code></pre>
 > ***NOTE** : Once again, use python3 instead in case of Linux/Mac .*
 * Arguments
   * -model : Default: 'resnet18', other option is 'inception' (Inception_v3).
   * -image_path : Image Directory path to test caption generation, default: 'test'
-  * -save_epoch : Trained model to be used after this many epochs.
-
+  * -epoch : Trained model to be used after this many epochs.
+  
+### 4. Validation 
+* Run the following command : 
+    <pre><code>python train.py -model <encoder_CNN_architecture> -dir <dev_dir_path> -save_epoch <model_checkpoint> -num_epoch <num_epoch></code></pre>
+> ***NOTE** : For last time, use python3 instead in case of Linux/Mac :).*
+* Arguments
+  * -model : Default: 'resnet18', other option is 'inception' (Inception_v3).
+  * -dir : Development Directory path, default: 'dev'
+  * -save_epoch : Epochs after which model saves checkpoint, default : 2
+  * -num_epoch : Number of epochs, default : 10
+> ***NOTE** : The save_epoch and num_epoch should match with your corresponding training model .*
 
 ## Factual Details
 - **Title** : Deep Visual-Semantic Alignments for Generating Image Descriptions
