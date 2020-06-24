@@ -76,7 +76,7 @@ if __name__ == '__main__':
                 image = image.unsqueeze(0)
                 
                 image = image.to(device)
-                caption = torch.LongTensor(shuffled_captions[i]).to(device)
+                caption = torch.LongTensor(captions[i]).to(device)
                 
                 caption_train = caption[:-1]  # remove <end>
                 
