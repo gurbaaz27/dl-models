@@ -61,12 +61,39 @@
 
 ## A Gentle Intoduction : Why ? 
 
+
+## Results :
+* Training time :
+<pre><code>Epoch : 0 , Avg_loss = 3.141907, Time = 9.89 mins
+Epoch : 1 , Avg_loss = 2.978030, Time = 9.89 mins
+Epoch : 2 , Avg_loss = 2.879061, Time = 9.88 mins
+Epoch : 3 , Avg_loss = 2.800483, Time = 9.90 mins
+Epoch : 4 , Avg_loss = 2.734463, Time = 9.88 mins
+Epoch : 5 , Avg_loss = 2.676081, Time = 9.90 mins
+Epoch : 6 , Avg_loss = 2.625130, Time = 9.89 mins
+Epoch : 7 , Avg_loss = 2.579518, Time = 9.90 mins
+Epoch : 8 , Avg_loss = 2.538572, Time = 9.90 mins
+Epoch : 9 , Avg_loss = 2.501715, Time = 9.90 mins
+      </code></pre>
 <p align="center">
-  <img width="572" height="133" src="images/infogan5.png">
+  <img width="697" height="398" src="assets/training_loss.JPG">
+</p>
+> ***NOTE** : Here loss plotted is total loss of dataset, which is for 6000 X 5 = 30000 captions. Mean loss is loss plotted divided by 30000 .*
+
+* Testing time : 
+ <pre><code><start> a man in a black shirt and blue pants is playing a guitar . <end></code></pre>
+ <p align="center">
+  <img width="986" height="535" src="assets/test1.jpg">
 </p>
 
-## Results : Woah !
+* Validation time :
+<pre><code>
+      </code></pre>
+<p align="center">
+  <img width="697" height="398" src="assets/validation_loss.JPG">
+</p>
 
+ 
 ## Acknowledgement
 - [Medium : Captioning Images with CNN and RNN, using PyTorch](https://medium.com/@stepanulyanin/captioning-images-with-pytorch-bc592e5fd1a3)
 - [Word Embeddings](https://pytorch.org/tutorials/beginner/nlp/word_embeddings_tutorial.html)
