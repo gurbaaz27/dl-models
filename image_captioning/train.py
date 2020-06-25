@@ -65,7 +65,7 @@ if __name__ == '__main__':
     cnn = get_CNN(architecture = model_name, embedding_dim = args.embedding_dim)
     lstm = RNN(embedding_dim = args.embedding_dim, hidden_dim = args.hidden_dim, vocab_size = vocab_size)
 
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
     cnn.to(device)
     lstm.to(device)
