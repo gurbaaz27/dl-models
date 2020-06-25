@@ -29,7 +29,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(args)
     
-    model_name = args.model + str(datetime.datetime.now())    # CNN
+    model_dir = args.model + str(datetime.datetime.now())    # CNN
+    model_name = args.model
     train_dir = args.dir
     learning_rate = args.learning_rate
     num_epoch = args.num_epoch
@@ -38,16 +39,16 @@ if __name__ == '__main__':
 
     nltk.download('punkt') #: uncomment if punkt is not found
 
-    if os.path.exists(model_name):
+    if os.path.exists(model_dir):
         print("Directory '{model_name}' already exists. Assuming vocab.pkl already dumped. If not, delete the empty directory '{model_name}' and start the program.".format(model_name=model_name))
-        f = open(os.path.join(model_name, 'vocab.pkl'), 'rb')
+        f = open(os.path.join(model_dir, 'vocab.pkl'), 'rb')
         vocab = pickle.load(f)
     else:
         captions_dict = load_captions(train_dir)
         vocab = Vocabulary(captions_dict, threshold)
-        os.mkdir(model_name)
+        os.mkdir(model_dir)
         print("Directory '{model_name}' created to dump vocab.pkl.".format(model_name=model_name))
-        with open(os.path.join(model_name, 'vocab.pkl'), 'wb') as f:
+        with open(os.path.join(model_dir, 'vocab.pkl'), 'wb') as f:
             pickle.dump(vocab, f)
             print('Dictionary Dumped !')
 
@@ -115,7 +116,7 @@ if __name__ == '__main__':
         print('Epoch : %d , Avg_loss = %f, Time = %.2f mins'%(epoch, avg_loss, ((end-start)/60)))
 
         if epoch % save_epoch == 0:
-            torch.save(cnn.state_dict(), os.path.join(model_name, 'epoch_%d_cnn.pkl'%(epoch)))
-            torch.save(lstm.state_dict(), os.path.join(model_name, 'epoch_%d_lstm.pkl'%(epoch)))
+            torch.save(cnn.state_dict(), os.path.join(model_dir, 'epoch_%d_cnn.pkl'%(epoch)))
+            torch.save(lstm.state_dict(), os.path.join(model_dir, 'epoch_%d_lstm.pkl'%(epoch)))
 
-torch.save(loss_list, os.path.join(model_name, 'training_loss.pt'))
+torch.save(loss_list, os.path.join(model_dir, 'training_loss.pt'))
