@@ -2,6 +2,7 @@ import os                       # Standard imports
 import argparse
 import nltk
 import time
+import datetime
 import pickle
 import torch
 import torch.nn as nn
@@ -27,8 +28,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     print(args)
-
-    model_name = args.model    # CNN
+    
+    model_name = args.model + str(datetime.datetime.now())    # CNN
     train_dir = args.dir
     learning_rate = args.learning_rate
     num_epoch = args.num_epoch
