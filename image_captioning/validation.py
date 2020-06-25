@@ -17,6 +17,7 @@ from dataloader import DataLoader, shuffle_data
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-model',type=str,default='resnet18')
+    parser.add_argument('-model_dir',type=str)
     parser.add_argument('-dir', type = str, default = 'dev')
     parser.add_argument('-save_epoch', type=int, default=2)
     parser.add_argument('-num_epoch', type=int, default=10)
@@ -31,8 +32,9 @@ if __name__ == '__main__':
     embedding_dim = 512
     hidden_dim = 512
     model_name = args.model
+    model_dir = args.model_dir
 
-    f = open(os.path.join(args.model, 'vocab.pkl'), 'rb')
+    f = open(os.path.join(model_dir, 'vocab.pkl'), 'rb')
     vocab = pickle.load(f)
     vocab_size = vocab.index
     
@@ -60,8 +62,8 @@ if __name__ == '__main__':
     for epoch in range(0, num_epoch, save_epoch):
         cnn_filename = 'epoch_' + str(epoch) + '_cnn.pkl'
         lstm_filename = 'epoch_' + str(epoch) + '_lstm.pkl'
-        cnn.load_state_dict(torch.load(os.path.join(model_name, cnn_filename)))
-        lstm.load_state_dict(torch.load(os.path.join(model_name, lstm_filename)))
+        cnn.load_state_dict(torch.load(os.path.join(model_dir, cnn_filename)))
+        lstm.load_state_dict(torch.load(os.path.join(model_dir, lstm_filename)))
 
         cnn.eval()
         lstm.eval()
@@ -89,4 +91,4 @@ if __name__ == '__main__':
         avg_loss = torch.mean(torch.Tensor(loss_list))
         print('%d %f' %(epoch, avg_loss))
 
-torch.save(loss_list, os.path.join(model_name, 'validation_loss.pt'))
+torch.save(loss_list, os.path.join(model_dir, 'validation_loss.pt'))
