@@ -1,5 +1,5 @@
 # PyTorch implementation of Image Captioning [*Paper*](https://cs.stanford.edu/people/karpathy/cvpr2015.pdf)
-## Requiremenets
+## Requirements
 * python
 * pytorch
 * pytorch-vision
