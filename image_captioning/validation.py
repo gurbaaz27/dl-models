@@ -4,6 +4,7 @@ import time
 import pickle
 import argparse
 from PIL import Image
+import torch
 import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
 #-------------------------
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     lstm = RNN(embedding_dim = embedding_dim, hidden_dim = hidden_dim,
 	           vocab_size = vocab_size)
 
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     cnn.to(device)
     lstm.to(device)
 
