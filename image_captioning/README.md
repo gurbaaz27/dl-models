@@ -25,7 +25,7 @@
       </code></pre>
 > ***NOTE** : Use python3 instead in case of Linux/Mac .*
 * Arguments
-  * -model : Default: 'resnet18', other option is 'inception' (Inception_v3).
+  * -model : Default: 'resnet18', other option is 'inception' (Inception_v3). Model dir is automatically saved with name of model + current_datetime. 
   * -dir : Training Directory path, default: 'train'
   * -save_epoch : Epochs after which model saves checkpoint, default : 2
   * -learning_rate : Adam optimizer learning rate, default : 1e-3 (0.001)
@@ -44,10 +44,11 @@
   
 ### 4. Validation 
 * Run the following command : 
-    <pre><code>python train.py -model <encoder_CNN_architecture> -dir <dev_dir_path> -save_epoch <model_checkpoint> -num_epoch <num_epoch></code></pre>
+    <pre><code>python train.py -model <encoder_CNN_architecture> model_dir <saved_model_dir> -dir <dev_dir_path> -save_epoch <model_checkpoint> -num_epoch <num_epoch></code></pre>
 > ***NOTE** : For last time, use python3 instead in case of Linux/Mac :).*
 * Arguments
   * -model : Default: 'resnet18', other option is 'inception' (Inception_v3).
+  * -model_dir : Saved model directory, which has name of format model + current_datetime.
   * -dir : Development Directory path, default: 'dev'
   * -save_epoch : Epochs after which model saves checkpoint, default : 2
   * -num_epoch : Number of epochs, default : 10
