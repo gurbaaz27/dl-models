@@ -18,13 +18,13 @@ from dataloader import DataLoader, shuffle_data
 # ---------------------------------
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-model',type=str,default='resnet18')
-    parser.add_argument('-dir',type=str,default='train')
-    parser.add_argument('-save_epoch',type=int,default=2)
-    parser.add_argument('-learning_rate',type=float,default=1e-3)
-    parser.add_argument('-num_epoch',type=int,default=10)
-    parser.add_argument('-hidden_dim',type=int,default=512)
-    parser.add_argument('-embedding_dim',type=int,default=512)
+    parser.add_argument('--model',type=str,default='resnet18')
+    parser.add_argument('--dir',type=str,default='train')
+    parser.add_argument('--save_epoch',type=int,default=2)
+    parser.add_argument('--learning_rate',type=float,default=1e-3)
+    parser.add_argument('--num_epoch',type=int,default=10)
+    parser.add_argument('--hidden_dim',type=int,default=512)
+    parser.add_argument('--embedding_dim',type=int,default=512)
 
     args = parser.parse_args()
     print(args)
