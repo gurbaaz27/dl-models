@@ -16,11 +16,11 @@ from dataloader import DataLoader, shuffle_data
 #------------------------------
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-model',type=str,default='resnet18')
-    parser.add_argument('-model_dir',type=str)
-    parser.add_argument('-dir', type = str, default = 'dev')
-    parser.add_argument('-save_epoch', type=int, default=2)
-    parser.add_argument('-num_epoch', type=int, default=10)
+    parser.add_argument('--model',type=str,default='resnet18')
+    parser.add_argument('--model_dir',type=str)
+    parser.add_argument('--dir', type = str, default = 'dev')
+    parser.add_argument('--save_epoch', type=int, default=2)
+    parser.add_argument('--num_epoch', type=int, default=10)
 
     args = parser.parse_args()
     print(args)
