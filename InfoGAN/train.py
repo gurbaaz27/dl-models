@@ -27,24 +27,22 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     # training hyper-parameters
-    parser.add_argument('-num_epoch', type=int, default=50)
-    parser.add_argument('-batch_size', type=int, default=100)
-    parser.add_argument('-num_workers', type=int, default=2)
+    parser.add_argument('--num_epoch', type=int, default=50)
+    parser.add_argument('--batch_size', type=int, default=100)
+    parser.add_argument('--num_workers', type=int, default=2)
     # Learning Rate for D
-    parser.add_argument('-lrD', type=float, default=0.0002)
+    parser.add_argument('--lrD', type=float, default=0.0002)
     # Learning Rate for G
-    parser.add_argument('-lrG', type=float, default=0.001)
-    parser.add_argument('-beta1', type=float, default=0.5)  # momentum1 in Adam
-    parser.add_argument('-beta2', type=float,
+    parser.add_argument('--lrG', type=float, default=0.001)
+    parser.add_argument('--beta1', type=float, default=0.5)  # momentum1 in Adam
+    parser.add_argument('--beta2', type=float,
                         default=0.999)  # momentum2 in Adam
-    parser.add_argument('-recog_weight', type=float, default=0.1)
+    parser.add_argument('--recog_weight', type=float, default=0.1)
     # misc
-    parser.add_argument('-model_path', type=str,
+    parser.add_argument('--model_path', type=str,
                         default='trained_model')  # Model Save
     parser.add_argument('-save_epoch', type=int,
                         default=5)  # Saving epochs after
-    parser.add_argument('-image_path', type=str,
-                        default='images')  # Image directory
 
     args = parser.parse_args()
     print(args)
