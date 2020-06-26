@@ -14,14 +14,18 @@ from dataloader import DataLoader, shuffle_data
 #--------------------------
 if __name__=='__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-model',type=str,default='resnet18')
-    parser.add_argument('-image_path',type=str,default='test')
-    parser.add_argument('-epoch',type=int)
+    parser.add_argument('--model',type=str,default='resnet18')
+    parser.add_argument('--model_dir',type=str)
+    parser.add_argument('--test_dir',type=str,default='test')
+    parser.add_argument('--filename',type=str)
+    parser.add_argument('--epoch',type=int)
 
     args = parser.parse_args()
     print(args)
+    model_name = args.model
+    model_dir = args.model_dir
 
-    f = open(os.path.join(model_name, 'vocab.pkl'), 'rb')
+    f = open(os.path.join(model_dir, 'vocab.pkl'), 'rb')
     vocab = pickle.load(f)
 
     transform = transforms.Compose([transforms.Resize((224, 224)),
@@ -29,12 +33,12 @@ if __name__=='__main__':
 	                                transforms.Normalize((0.5, 0.5, 0.5),
 	                                                     (0.5, 0.5, 0.5))
 	                                ])
-	image = transform(Image.open(args.image_path))
+    image = Image.open(os.path.join(args.test_dir,args.filename))
+    #image.show()
+    image = transform(image)
     vocab_size = vocab.index
     embedding_dim = 512
     hidden_dim = 512
-    model_name = args.models
-    epoch = args.epoch
 
     cnn = get_CNN(architecture= model_name, embedding_dim=embedding_dim)
     lstm = RNN(embedding_dim=embedding_dim,hidden_dim=hidden_dim,vocab_size=vocab_size)
@@ -44,11 +48,11 @@ if __name__=='__main__':
     image = image.unsqueeze(0)
     image = image.to(device)
 
-    cnn_filename = 'epoch_' + epoch + '_cnn.pkl'
-    lstm_filename = 'epoch_' + epoch + '_lstm.pkl'
+    cnn_filename = 'epoch_' + str(args.epoch) + '_cnn.pkl'
+    lstm_filename = 'epoch_' + str(args.epoch) + '_lstm.pkl'
 
-    cnn.load_state_dict(torch.load(os.path.join(model_name, cnn_filename)))
-    lstm.load_state_dict(torch.load(os.path.join(model_name, lstm_filename)))
+    cnn.load_state_dict(torch.load(os.path.join(model_dir, cnn_filename)))
+    lstm.load_state_dict(torch.load(os.path.join(model_dir, lstm_filename)))
 
     cnn_output = cnn(image)
     ids_list = lstm.greedy(cnn_output)
