@@ -21,7 +21,7 @@
       
 ### 2. Training the data
 * Run the following command : 
-      <pre><code>python train.py -model <encoder_CNN_architecture> -dir <train_dir_path> -save_epoch <model_checkpoint> -learning_rate <learning_rate> -num_epoch <num_epoch> -hidden_dim <lstm_hidden_state_dim> -embedding_dim <encoder_CNN_output>
+      <pre><code>python train.py --model <encoder_CNN_architecture> --dir <train_dir_path> --save_epoch <model_checkpoint> --learning_rate <learning_rate> --num_epoch <num_epoch> --hidden_dim <lstm_hidden_state_dim> --embedding_dim <encoder_CNN_output>
       </code></pre>
 > ***NOTE** : Use python3 instead in case of Linux/Mac .*
 * Arguments
@@ -35,16 +35,18 @@
 
 ### 3. Testing the model
 * Run the following command : 
-    <pre><code>python test.py -model <encoder_CNN_architecture> -image_path <image_path> -epoch <epoch_num></code></pre>
+    <pre><code>python test.py --model <encoder_CNN_architecture> --model_dir <model_dir> --test_dir<test_dir> --filename <filename> --epoch <epoch_num></code></pre>
 > ***NOTE** : Once again, use python3 instead in case of Linux/Mac .*
 * Arguments
   * -model : Default: 'resnet18', other option is 'inception' (Inception_v3).
-  * -image_path : Image Directory path to test caption generation, default: 'test'
+  * -model_dir : Saved model directory name.
+  * -test_dir : Default: 'test'.
+  * -filename : Image name.
   * -epoch : Trained model to be used after this many epochs.
   
 ### 4. Validation 
 * Run the following command : 
-    <pre><code>python train.py -model <encoder_CNN_architecture> model_dir <saved_model_dir> -dir <dev_dir_path> -save_epoch <model_checkpoint> -num_epoch <num_epoch></code></pre>
+    <pre><code>python train.py --model <encoder_CNN_architecture> --model_dir <saved_model_dir> --dir <dev_dir_path> --save_epoch <model_checkpoint> --num_epoch <num_epoch></code></pre>
 > ***NOTE** : For last time, use python3 instead in case of Linux/Mac :).*
 * Arguments
   * -model : Default: 'resnet18', other option is 'inception' (Inception_v3).
