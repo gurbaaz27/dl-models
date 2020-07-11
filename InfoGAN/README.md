@@ -29,7 +29,7 @@ tensorboard --logdir=runs
 ```bash
 python train.py
 ```
-> ***NOTE** : Use python3 instead in case of Linux/Mac . For Colab, use !python .*
+> ***NOTE** : Use python3 instead in case of Linux/Mac . **For Colab, use !python** .*
 ```bash
 usage: train.py [-h] [-num_epoch NUM_EPOCH] [-batch_size BATCH_SIZE]
                 [-num_workers NUM_WORKERS] [-lrD LRD] [-lrG LRG]
@@ -83,18 +83,18 @@ But still, it seemed that all learning was kinda like black box, and model didnt
 ## Understanding the Theory : What ? 
 The main difference is the addition of latent code 'c' to the tranditional noise vector 'z' fed into the Generator. So now G(z) looks like G(z,c). To hope that the network understands these latent codes in an unsupervised manner, an information-theoretic regularisation is proposed: there should be high mutual information between latent codes c and generator distribution G(z,c). Formally, I(c; G(z, c)) should be high. So basically, an additional regularisation term is added to original GAN objective.
 <p align="center">
-  <img width="358" height="63" src="images/1.png">
+  <img width="358" height="63" src="assets/1.png">
 </p>
 
 Now, as the fairyland it seems, practically maximizing this I(c; G(z,c)) is hard as it requires knowledge of the posterior P(c|x), but we can still find a lower bound solution. This consists of introducing an “auxiliary” distribution Q(c|x), which is modeled by a parameterized neural network, and is meant to approximate the real P(c|x). They then use a re-parameterization trick to make it such that you can merely sample from a user-specified prior (i.e. uniform distribution) instead of the unknown posterior.
 <p align="center">
-  <img width="571" height="274" src="images/2.png">
+  <img width="571" height="274" src="assets/2.png">
 </p>
 
 ## Implementing the Architecture : How ?
 Auxiliary network Q is modelled as a neural network, and shares most of the structure with that of Discriminator except the last layer, since their purpose are different. For MNIST, linear input of 74 variables is fed, consisting of 62 random noise variables, 10 for the categories we hope would match to each of the digit, and 2 latent codes, 1 for width and other for the rotation of digits, random values between -1 and +1. Even though InfoGAN introduces an extra hyperparameter λ, it’s easy to tune and simply setting to 1 is sufficient for discrete latent codes. Knowing the difficult training of GAN, the paper copies the layers from an existing architecture, [DCGAN](https://arxiv.org/abs/1511.06434). So, to ease things out, InfoGAN basically adds a few components to the DCGAN, latent code 'c', an auxiliary network Q and all the training to estimate c unsupervisedly.
 <p align="center">
-  <img width="572" height="133" src="images/infogan5.png">
+  <img width="572" height="133" src="assets/infogan5.png">
 </p>
 
 ## Results :
@@ -153,38 +153,38 @@ Epoch[49/50]	Loss_D: 0.4998	Loss_G: 4.0496	Time:0.28
 Epoch[50/50]	Loss_D: 0.2323	Loss_G: 4.0389	Time:0.29
 </code></pre>
 <p align="center">
-  <img width="433" height="289" src="images/discriminator_loss.PNG">
-  <img width="433" height="289" src="images/generator_loss.PNG"> 
+  <img width="433" height="289" src="assets/discriminator_loss.PNG">
+  <img width="433" height="289" src="assets/generator_loss.PNG"> 
 </p>
 
 > ***NOTE** : Images get saved in trained_model directory in png format.*
 ### Generated Images
 * Going down, generated images are at 10,20,30,40 and 50 epochs. ***Im wondering what the hell happened at 40 epochs!***
 <p align="center">
-  <img width="302" height="302" src="images/epoch_10_c1.png">
-  <img width="302" height="302" src="images/epoch_10_c2.png"> 
+  <img width="302" height="302" src="assets/epoch_10_c1.png">
+  <img width="302" height="302" src="assets/epoch_10_c2.png"> 
 </p>
 <p align="center">
-  <img width="302" height="302" src="images/epoch_20_c1.png">
-  <img width="302" height="302" src="images/epoch_20_c2.png"> 
+  <img width="302" height="302" src="assets/epoch_20_c1.png">
+  <img width="302" height="302" src="assets/epoch_20_c2.png"> 
 </p>
 <p align="center">
-  <img width="302" height="302" src="images/epoch_30_c1.png">
-  <img width="302" height="302" src="images/epoch_30_c2.png"> 
+  <img width="302" height="302" src="assets/epoch_30_c1.png">
+  <img width="302" height="302" src="assets/epoch_30_c2.png"> 
 </p>
 <p align="center">
-  <img width="302" height="302" src="images/epoch_40_c1.png">
-  <img width="302" height="302" src="images/epoch_40_c2.png"> 
+  <img width="302" height="302" src="assets/epoch_40_c1.png">
+  <img width="302" height="302" src="assets/epoch_40_c2.png"> 
 </p>
 <p align="center">
-  <img width="302" height="302" src="images/epoch_50_c1.png">
-  <img width="302" height="302" src="images/epoch_50_c2.png"> 
+  <img width="302" height="302" src="assets/epoch_50_c1.png">
+  <img width="302" height="302" src="assets/epoch_50_c2.png"> 
 </p>
 
 ### GIF of formation
 <p align="center">
-  <img width="302" height="302" src="images/c1.gif">
-  <img width="302" height="302" src="images/c2.gif"> 
+  <img width="302" height="302" src="assets/c1.gif">
+  <img width="302" height="302" src="assets/c2.gif"> 
 </p>
 
 ## Acknowledgement
