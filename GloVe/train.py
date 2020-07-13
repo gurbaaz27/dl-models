@@ -78,16 +78,16 @@ if __name__=='__main__':
     print('Saving losses .....!')
     torch.save(LOSS, os.path.join(model_name, 'training_loss.pt'))
     print('Saved!')
-
-    print('Plotting TSNE space of top {} words:....'.format(args.top_k))
-    emb_i = glove.wi.weight.cpu().data.numpy()
-    emb_j = glove.wj.weight.cpu().data.numpy()
-    emb = emb_i + emb_j
-    top_k = args.top_k
-    tsne = TSNE(metric='cosine', random_state=123)
-    embed_tsne = tsne.fit_transform(emb[:top_k, :])
-    fig, ax = plt.subplots(figsize=(14, 14))
-    for idx in range(top_k):
-        plt.scatter(*embed_tsne[idx, :], color='steelblue')
-        plt.annotate(dataset._id2word[idx], (embed_tsne[idx, 0], embed_tsne[idx, 1]), alpha=0.7)
-        plt.show()
+    if args.get_TSNE_plot == True:
+        print('Plotting TSNE space of top {} words:....'.format(args.top_k))
+        emb_i = glove.wi.weight.cpu().data.numpy()
+        emb_j = glove.wj.weight.cpu().data.numpy()
+        emb = emb_i + emb_j
+        top_k = args.top_k
+        tsne = TSNE(metric='cosine', random_state=123)
+        embed_tsne = tsne.fit_transform(emb[:top_k, :])
+        fig, ax = plt.subplots(figsize=(14, 14))
+        for idx in range(top_k):
+            plt.scatter(*embed_tsne[idx, :], color='steelblue')
+            plt.annotate(dataset._id2word[idx], (embed_tsne[idx, 0], embed_tsne[idx, 1]), alpha=0.7)
+            plt.show()
