@@ -99,7 +99,7 @@ Auxiliary network Q is modelled as a neural network, and shares most of the stru
 
 ## Results :
 ### Training on MNIST dataset for 50 epochs :
-<pre><code>
+```bash
 Training Started!
 Epoch[1/50]	Loss_D: 0.1175	Loss_G: 7.1921	Time:0.27
 Epoch[2/50]	Loss_D: 0.1191	Loss_G: 7.2145	Time:0.27
@@ -151,7 +151,7 @@ Epoch[47/50]	Loss_D: 0.2114	Loss_G: 4.1357	Time:0.28
 Epoch[48/50]	Loss_D: 0.2629	Loss_G: 3.7725	Time:0.28
 Epoch[49/50]	Loss_D: 0.4998	Loss_G: 4.0496	Time:0.28
 Epoch[50/50]	Loss_D: 0.2323	Loss_G: 4.0389	Time:0.29
-</code></pre>
+```
 <p align="center">
   <img width="433" height="289" src="assets/discriminator_loss.PNG">
   <img width="433" height="289" src="assets/generator_loss.PNG"> 
