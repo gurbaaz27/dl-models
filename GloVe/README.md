@@ -153,6 +153,48 @@ Although many f(x) exists for solving the purpose,the one used by GloVe is
 In the paper, ***alpha = 0.75*** and ***x_max = 100*** have been considered.
 
 ## Results :
+```bash
+Namespace(alpha=0.75, batch_size=2048, embedding_dim=300, get_TSNE_plot=True, lr=0.05, num_epoch=3, save_epoch=1, top_k=300, x_max=100)
+No. of words: 17005208
+Vocabulary length : 253855
+2020-07-13 11:36:05.156423: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+Number of batches : 15876
+Training Starts...........!
+Epoch[1/3]	Batch[100/15876]	Loss: 0.9336	Time:0.15
+Epoch[1/3]	Batch[200/15876]	Loss: 1.2259	Time:0.11
+Epoch[1/3]	Batch[300/15876]	Loss: 1.0950	Time:0.11
+Epoch[1/3]	Batch[400/15876]	Loss: 1.0565	Time:0.11
+Epoch[1/3]	Batch[500/15876]	Loss: 1.0176	Time:0.11
+Epoch[1/3]	Batch[600/15876]	Loss: 0.9469	Time:0.11
+Epoch[1/3]	Batch[700/15876]	Loss: 0.8383	Time:0.11
+Epoch[1/3]	Batch[800/15876]	Loss: 0.8585	Time:0.11
+Epoch[1/3]	Batch[900/15876]	Loss: 1.0090	Time:0.11
+Epoch[1/3]	Batch[1000/15876]	Loss: 0.9323	Time:0.11
+Epoch[1/3]	Batch[1100/15876]	Loss: 0.7498	Time:0.11
+Epoch[1/3]	Batch[1200/15876]	Loss: 0.7582	Time:0.11
+Epoch[1/3]	Batch[1300/15876]	Loss: 0.7805	Time:0.11
+Epoch[1/3]	Batch[1400/15876]	Loss: 0.8787	Time:0.11
+Epoch[1/3]	Batch[1500/15876]	Loss: 0.8331	Time:0.11
+Epoch[1/3]	Batch[1600/15876]	Loss: 0.7062	Time:0.11
+Epoch[1/3]	Batch[1700/15876]	Loss: 0.9646	Time:0.11
+Epoch[1/3]	Batch[1800/15876]	Loss: 0.7531	Time:0.11
+Epoch[1/3]	Batch[1900/15876]	Loss: 0.7649	Time:0.11
+Epoch[1/3]	Batch[2000/15876]	Loss: 0.7399	Time:0.11
+Epoch[1/3]	Batch[2100/15876]	Loss: 0.6639	Time:0.11
+Epoch[1/3]	Batch[2200/15876]	Loss: 0.7185	Time:0.11
+Epoch[1/3]	Batch[2300/15876]	Loss: 0.7568	Time:0.11
+Epoch[1/3]	Batch[2400/15876]	Loss: 0.7428	Time:0.11
+...................(only a segment shown)
+```
+#### Training Loss
+<p align="center">
+  <img width="491" height="306" src="assets/training_loss.PNG">
+</p>
+
+#### TSNE plot of top 300 words
+<p align="center">
+  <img width="422" height="414" src="assets/TSNE_plot.PNG">
+</p>
 
 ## Acknowledgement
 - [Intuitive Guide to Understanding GloVe Embeddings](https://towardsdatascience.com/light-on-math-ml-intuitive-guide-to-understanding-glove-embeddings-b13b4f19c010)
