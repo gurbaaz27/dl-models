@@ -22,7 +22,7 @@ if __name__=='__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--num_epoch', type=int, default=100, help='Number of epochs,default: 100')
-    parser.add_argument('--save_epoch', type=int, default=1, help='Epochs after which model is saved,default: 1')
+    parser.add_argument('--save_epoch', type=int, default=10, help='Epochs after which model is saved,default: 10')
     parser.add_argument('--batch_size',type=int, default=2048,help='Batch size, default: 2048')
 
     parser.add_argument('--embedding_dim',type=int, default=300, help='Embedding dimension, default: 512')
