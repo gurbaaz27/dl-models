@@ -47,7 +47,7 @@ optional arguments:
   --batch_size BATCH_SIZE
                         Batch size, default: 2048
   --embedding_dim EMBEDDING_DIM
-                        Embedding dimension, default: 512
+                        Embedding dimension, default: 300
   --lr LR               Learning rate of Adagrad optimiser, default: 0.05
   --x_max X_MAX         Parameter in computing weighting terms, default: 100
   --alpha ALPHA         Parameter in computing weighting terms, default: 0.75
