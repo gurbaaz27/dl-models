@@ -38,7 +38,7 @@ if __name__=='__main__':
     model_name = "GloVe_" + str(datetime.datetime.now())
     os.mkdir(model_name)
     device  = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-    dataset = GloveDataset(open(os.path.join('data', 'text8').read(), 10000000)
+    dataset = GloveDataset(open(os.path.join('data', 'text8')).read(), 10000000)
     glove  = Glove(dataset._vocab_len, args.embedding_dim).to(device)
 
     optimizer = torch.optim.Adagrad(glove.parameters(), lr=args.lr)
