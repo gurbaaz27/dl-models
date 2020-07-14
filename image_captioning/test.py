@@ -17,8 +17,8 @@ if __name__=='__main__':
     parser.add_argument('filename',type=str,help="Image filename.")
     parser.add_argument('epoch',type=int,help="Number of epochs model has been trained for.")
     parser.add_argument('model_dir',type=str,help="Saved model directory, which has name of format: model + current_datetime.")
-    parser.add_argument('-model',type=str,default='resnet18',help="Encoder CNN architecture.Default: 'resnet18', other option is 'inception' (Inception_v3).")
-    parser.add_argument('-test_dir',type=str,default='test',help="Test dataset directory name, default: 'test'.")
+    parser.add_argument('--model',type=str,default='resnet18',help="Encoder CNN architecture.Default: 'resnet18', other option is 'inception' (Inception_v3).")
+    parser.add_argument('--test_dir',type=str,default='test',help="Test dataset directory name, default: 'test'.")
 
     args = parser.parse_args()
     print(args)
