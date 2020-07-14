@@ -40,26 +40,26 @@ tensorboard --logdir=runs
 python train.py
 ```
 ```bash
-usage: train.py [-h] [-model MODEL] [-dir DIR] [-save_epoch SAVE_EPOCH]
-                [-learning_rate LEARNING_RATE] [-num_epoch NUM_EPOCH]
-                [-hidden_dim HIDDEN_DIM] [-embedding_dim EMBEDDING_DIM]
+usage: train.py [-h] [--model MODEL] [--dir DIR] [--save_epoch SAVE_EPOCH]
+                [--learning_rate LEARNING_RATE] [--num_epoch NUM_EPOCH]
+                [--hidden_dim HIDDEN_DIM] [--embedding_dim EMBEDDING_DIM]
 
 optional arguments:
   -h, --help            show this help message and exit
-  -model MODEL          Encoder CNN architecture.Default: 'resnet18', other
+  --model MODEL          Encoder CNN architecture.Default: 'resnet18', other
                         option is 'inception' (Inception_v3). Model dir is
                         automatically saved with name of model +
                         current_datetime.
-  -dir DIR              Training Directory path, default: 'train'
-  -save_epoch SAVE_EPOCH
+  --dir DIR              Training Directory path, default: 'train'
+  --save_epoch SAVE_EPOCH
                         Epochs after which model saves checkpoint, default : 2
-  -learning_rate LEARNING_RATE
+  --learning_rate LEARNING_RATE
                         Adam optimizer learning rate, default : 1e-3 (0.001)
-  -num_epoch NUM_EPOCH  Number of epochs, default : 10
-  -hidden_dim HIDDEN_DIM
+  --num_epoch NUM_EPOCH  Number of epochs, default : 10
+  --hidden_dim HIDDEN_DIM
                         Dimensions in hidden state of LSTM decoder, default :
                         512
-  -embedding_dim EMBEDDING_DIM
+  --embedding_dim EMBEDDING_DIM
                         Dimensions of encoder output, default : 512
 ```
 
@@ -69,7 +69,7 @@ optional arguments:
 python test.py model_dir <MODEL_DIR> filename <FILENAME> epoch <EPOCH>
 ```
 ```bash
-usage: test.py [-h] [-model MODEL] [-test_dir TEST_DIR]
+usage: test.py [-h] [--model MODEL] [--test_dir TEST_DIR]
                filename epoch model_dir
 
 positional arguments:
@@ -80,9 +80,9 @@ positional arguments:
 
 optional arguments:
   -h, --help          show this help message and exit
-  -model MODEL        Encoder CNN architecture.Default: 'resnet18', other
+  --model MODEL        Encoder CNN architecture.Default: 'resnet18', other
                       option is 'inception' (Inception_v3).
-  -test_dir TEST_DIR  Test dataset directory name, default: 'test'.
+  --test_dir TEST_DIR  Test dataset directory name, default: 'test'.
 ```
   
 ### 4. Validation 
