@@ -25,7 +25,7 @@ if __name__=='__main__':
     parser.add_argument('--save_epoch', type=int, default=10, help='Epochs after which model is saved,default: 10')
     parser.add_argument('--batch_size',type=int, default=2048,help='Batch size, default: 2048')
 
-    parser.add_argument('--embedding_dim',type=int, default=300, help='Embedding dimension, default: 512')
+    parser.add_argument('--embedding_dim',type=int, default=300, help='Embedding dimension, default: 300')
     parser.add_argument('--lr',type=float,default=0.05,help='Learning rate of Adagrad optimiser, default: 0.05')
     parser.add_argument('--x_max',type=int,default=100, help='Parameter in computing weighting terms, default: 100')
     parser.add_argument('--alpha',type=float,default=0.75, help='Parameter in computing weighting terms, default: 0.75')
@@ -90,4 +90,3 @@ if __name__=='__main__':
         for idx in range(top_k):
             plt.scatter(*embed_tsne[idx, :], color='steelblue')
             plt.annotate(dataset._id2word[idx], (embed_tsne[idx, 0], embed_tsne[idx, 1]), alpha=0.7)
-            plt.show()
