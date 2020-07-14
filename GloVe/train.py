@@ -74,7 +74,7 @@ if __name__=='__main__':
         if (epoch+1) % args.save_epoch == 0:
         	torch.save({'glove' : glove.state_dict(),'optimizer' :optimizer.state_dict(),'params' : args}, os.path.join(model_name, 'epoch_%d_model.pkl'%(epoch+1)))
 
-
+    plt.plot(LOSS)
     print('Saving losses .....!')
     torch.save(LOSS, os.path.join(model_name, 'training_loss.pt'))
     print('Saved!')
